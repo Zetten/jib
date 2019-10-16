@@ -58,6 +58,7 @@ public class TarExtractor {
         if (entry.isDirectory()) {
           Files.createDirectories(entryPath);
         } else {
+          Files.createDirectories(entryPath.getParent());
           try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(entryPath))) {
             ByteStreams.copy(tarArchiveInputStream, out);
           }
